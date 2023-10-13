@@ -1,0 +1,4 @@
+/* 加边框 */
+canvas{
+    border:1px solid black;
+}
