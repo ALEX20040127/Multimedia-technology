@@ -112,5 +112,7 @@ function clearCanvas(context,rect) {
  */
 function drawCirclePath(circle,isNewPath,isClosePath){
     //【请补充】
-    
+    if(isNewPath) context.beginPath();
+    context.arc(circle.x, circle.y, circle.r, circle.startAngle, circle.endAngle);
+    if(isClosePath) context.closePath();
 }
