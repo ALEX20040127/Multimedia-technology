@@ -11,7 +11,7 @@ var canvas = document.getElementById('canvas'),
 var pattern;
 //新建图像对象
 var image=new Image();
-
+var imageAngle=0;
 //定义圆对象，需要有以下信息
 //绘制圆心坐标(x,y)、半径r、起始弧度startAngle、终止弧度endAngle和是否顺时针clockwise信息
 var circle={
@@ -53,6 +53,12 @@ function drawCircle() {
    circle.r=RADIUS;
    drawCirclePath(circle,true,false);
    context.lineWidth=15;
+   //添加阴影
+
+   context.shadowColor='pink';
+   context.shadowBlur=20;
+   context.shadowOffsetY=10;
+
    //调用functions.js中的putColorOnPath函数用默认色描边圆路径
    putColorOnPath("LightBlue",0);
    context.restore();
@@ -62,7 +68,7 @@ function drawCircle() {
 function drawNumerals() {
    var numerals = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
        angle = 0,
-       numeralWidth = 0;
+       numeralWidth = 0  ;
 
    numerals.forEach(function(numeral) {
       angle = Math.PI/6 * (numeral-3);
@@ -121,7 +127,6 @@ function drawClock() {
    clearCanvas(context,rect);
    // 图案绘制
    drawClockPattern();
-   image.style.transform = "rotate(6deg)";
    drawCircle();
    drawCenter();
    drawDot();
@@ -135,18 +140,17 @@ function drawClockPattern(){
    //保存绘图环境
    context.save();
 
-   //平移坐标系，让图像的中心点可以和canvas中心点吻合
-   context.translate(canvas.width/2-image.width/2,canvas.height/2-image.height/2);  //改变坐标原点,坐标系平移
+   // //平移坐标系，让图像的中心点可以和canvas中心点吻合
+   context.translate(canvas.width/2,canvas.height/2);  //改变坐标原点,坐标系平移
+   context.rotate(imageAngle);
+   // var angle = (Math.PI*2) * (date.getSeconds()/60) - Math.PI/2,
+   // imageAngle=imageAngle+angle;
+   imageAngle++;
+   context.scale(0.5,0.5);
+   context.drawImage(image,-image.width/2,-image.height/2, image.width, image.height);
    
-   //调用functions.js中的drawRect函数绘制填充图案的矩形（显示图像）
-   let fillRect={
-      x:0,
-      y:0,
-      w:image.width,
-      h:image.height
-   }
-
-   drawRect(fillRect,pattern,true);
+   
+   
    //还原绘图环境
    context.restore();
 }

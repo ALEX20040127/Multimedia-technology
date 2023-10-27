@@ -1,0 +1,17 @@
+body {
+    background: linear-gradient(pink,skyblue);
+}
+
+.outer{
+    text-align: center;
+}
+#canvas {
+    background:linear-gradient(pink,skyblue);
+/* border: thin solid #aaaaaa; */
+}
+
+#weather{
+    margin-bottom: 100px;
+    margin-left: 20px;
+    background:linear-gradient(pink,lightsalmon);
+}

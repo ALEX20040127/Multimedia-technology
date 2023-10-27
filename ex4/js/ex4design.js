@@ -1,5 +1,8 @@
 var rem = canvas.width/200;
 var date = new Date();
+const apiKey = "5feec3fea154195b81e6ef4793c40af1";
+const city = "hangzhou";
+const apiUrl = `https://api.openweathermap.org/data/2.5/weather?&units=metric&q=${city}&appid=${apiKey}`;
 
 function drawDot(){
     for (var i = 0; i < 60; i++) {
@@ -52,10 +55,32 @@ function drawDate(){
     context.restore();
 }
 
+function playTickSound() {
+    const audio = document.getElementById("clockTick");
+    audio.currentTime = 0; // 从音频开始位置播放
+    audio.play();
+}
 
-// function changeAngle(image){
-//     var angle = (Math.PI*2) * (date.getSeconds()/60) - Math.PI/2;
-//     context.translate(canvas.width/2, canvas.height/2);
-//     context.context.rotate(angle);
-//     context.translate(canvas.width/2, canvas.height/2);
-// }
+function drawCurrentWeather(){
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        const city = data.name;
+        const temperature = data.main.temp;//气温
+        const weather = data.weather[0].main;//天气
+        const weatherDescription = data.weather[0].description;//详细天气
+        const humidity = data.main.humidity;//湿度
+
+        wcontext.fillStyle="#4682B4";
+        wcontext.font='20px sans-serif';
+        wcontext.fillText("城市:"+city,weatherInfo.width/6,weatherInfo.height*2/8);
+        wcontext.fillText("温度:"+temperature+"°C",weatherInfo.width/6,weatherInfo.height*3/8);
+        wcontext.fillText("天气:"+weather,weatherInfo.width/6,weatherInfo.height/2);
+        wcontext.fillText("详细天气:"+weatherDescription,weatherInfo.width/6,weatherInfo.height*5/8);
+        wcontext.fillText("湿度:"+humidity,weatherInfo.width/6,weatherInfo.height*6/8);
+    })
+    .catch(error => {
+        console.error("Error fetching weather data: " + error);
+    });
+
+};
