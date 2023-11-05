@@ -156,8 +156,8 @@ function onImgLoad(){
    setInterval(drawClock,1000);
  }
 function drawWeatherInfo(){
-   drawCurrentWeather();
-   // setInterval(drawCurrentWeather, 600000); // 例如，每隔10分钟更新一次天气信息
+   weatherInfo.style.borderRadius='20px';
+   setInterval(drawCurrentWeather, 600000);
 }
 // Initialization................................................
 function init(){

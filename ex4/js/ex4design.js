@@ -84,3 +84,42 @@ function drawCurrentWeather(){
     });
 
 };
+
+// const snowflakes = [];
+// function createSnowflake() {
+//     if (snowflakes.length < 50) {
+//         const x = Math.random() * canvas.width;
+//         const y = Math.random() * canvas.height;
+//         const size = Math.random() * 5 + 2; // 雪花大小范围
+//         const speed = Math.random() * 3 + 1; // 雪花下落速度范围
+//         const color = "white";
+        
+//         snowflakes.push({ x, y, size, speed, color });
+//     }
+// }
+
+// function drawSnowflakes() {
+//     for (let i = 0; i < snowflakes.length; i++) {
+//         const flake = snowflakes[i];
+        
+//         context.beginPath();
+//         context.fillStyle = flake.color;
+//         context.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+//         context.fill();
+        
+//         flake.y += flake.speed;
+        
+//         if (flake.y > canvas.height) {
+//             flake.y = 0;
+//             flake.x = Math.random() * canvas.width;
+//         }
+//     }
+// }
+
+// function animate() {
+//     context.clearRect(0, 0, canvas.width, canvas.height);
+//     createSnowflake();
+//     drawSnowflakes();
+//     requestAnimationFrame(animate);
+// }
+
