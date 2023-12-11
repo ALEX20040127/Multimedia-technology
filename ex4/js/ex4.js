@@ -128,26 +128,26 @@ function drawClock() {
 //绘制钟面图像
 function drawClockPattern(){
     //保存绘图环境
-   context.save();
+    context.save();
 
-   //平移坐标系，让图像的中心点可以和canvas中心点吻合
-   //【请补充】
-   context.translate(canvas.width/2, canvas.height/2);
-
-   
-   //让钟面中心的图像围绕canvas的中心点旋转起来，并且图像要缩小到原来的一半
-   //【请补充】
-   context.rotate(imageAngle);
-   context.scale(0.5, 0.5);
-   
-   imageAngle++;
-   //调用functions.js中的drawImg函数和Rect、Image对象来绘制钟面的旋转图像
-   //【请补充】
-   // context.drawImage(image, 0, 0, image.width, image.height);
-   var rect2=new Rect(-image.width/2,-image.height/2,image.width,image.height);
-   drawImg(context,image,rect2);
-   //还原绘图环境
-   context.restore();
+    //平移坐标系，让图像的中心点可以和canvas中心点吻合
+    //【请补充】
+    context.translate(canvas.width/2, canvas.height/2);
+ 
+    
+    //让钟面中心的图像围绕canvas的中心点旋转起来，并且图像要缩小到原来的一半
+    //【请补充】
+    context.rotate(imageAngle);
+    context.scale(0.5, 0.5);
+    
+    imageAngle++;
+    //调用functions.js中的drawImg函数和Rect、Image对象来绘制钟面的旋转图像
+    //【请补充】
+    // context.drawImage(image, 0, 0, image.width, image.height);
+    var rect2=new Rect(-image.width/2,-image.height/2,image.width,image.height);
+    drawImg(context,image,rect2);
+    //还原绘图环境
+    context.restore();
 }
 
 function onImgLoad(){
