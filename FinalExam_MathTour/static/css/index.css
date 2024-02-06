@@ -1,0 +1,51 @@
+@font-face {  
+   font-family: "FangSong";  
+   src: url("font/FangSong.ttf");  
+}  
+
+html, body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+ }
+ 
+ .objContainer {
+  
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   
+ }
+
+ .background-wrapper {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 200%; /* 两个背景图像的宽度之和 */
+   height: 100%;
+   z-index: -1;
+   animation: background-animation 10s linear infinite; /* 背景动画的持续时间和循环方式 */
+ }
+ 
+ .background-image {
+   float: left;
+   width: 50%; /* 每个背景图像的宽度 */
+   height: 100%;
+   background-image: url("images/background.png"); /* 替换为你的背景图像路径 */
+   background-size: cover;
+   background-position: center;
+ }
+ 
+ @keyframes background-animation {
+   0% {
+     transform: translateX(0);
+   }
+   100% {
+     transform: translateX(-50%); /* 移动一个背景图像的宽度 */
+   }
+ }
+ 
+ 
+ 

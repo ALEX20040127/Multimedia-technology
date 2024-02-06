@@ -199,7 +199,7 @@ function stopGame(){
   redrawLeft();
 }
 
-function onSpaceKewindyDown(event) {
+function onSpaceKeyDown(event) {
     if (event.code === "Space") {
       if (sum == 0) {
         intervalId = setInterval(onMovieCanvasInterval, ONE_SECOND*2);
